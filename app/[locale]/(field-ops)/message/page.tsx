@@ -21,6 +21,8 @@ export default function MessagePage() {
   const [refreshKey, setRefreshKey] = useState(0)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+    
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024) // lg breakpoint
     }

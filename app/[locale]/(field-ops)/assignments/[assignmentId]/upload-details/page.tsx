@@ -185,8 +185,15 @@ export default function UploadDetailsPage() {
         {/* Right Column */}
         <div className="space-y-6">
           <DocumentsUploader
-            documents={report.documents}
-            onChange={(docs) => setReport({ ...report, documents: docs })}
+            documents={report.documents.map(doc => ({ ...doc, url: doc.url || '#' }))}
+            onChange={(docs) => setReport({ 
+              ...report, 
+              documents: docs.map(doc => ({ 
+                name: doc.name, 
+                size: doc.size, 
+                url: doc.url || '#' 
+              }))
+            })}
           />
 
           {/* Progress */}
